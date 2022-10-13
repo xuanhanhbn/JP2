@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane fx:controller="ss1.Book.editController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField fx:id="txtID" layoutX="50.0" layoutY="82.0" prefHeight="44.0" prefWidth="177.0" promptText="idBook" />
+      <TextField fx:id="txtName" layoutX="50.0" layoutY="149.0" prefHeight="44.0" prefWidth="177.0" promptText="Name Book" />
+      <TextField fx:id="txtCategory" layoutX="50.0" layoutY="219.0" prefHeight="44.0" prefWidth="177.0" promptText="Category" />
+      <TextField fx:id="txtDes" layoutX="350.0" layoutY="82.0" prefHeight="44.0" prefWidth="177.0" promptText="Description" />
+      <TextField fx:id="txtAuthor" layoutX="350.0" layoutY="149.0" prefHeight="44.0" prefWidth="177.0" promptText="Author" />
+      <Button onAction="#handleUpdate" layoutX="50.0" layoutY="291.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="177.0" text="Update" />
+      <Button onAction="#handleCancel" layoutX="350.0" layoutY="291.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="177.0" text="Cancel" />
+   </children>
+</Pane>
