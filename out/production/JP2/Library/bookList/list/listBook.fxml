@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane fx:controller="Library.bookList.list.listBookController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text layoutX="231.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book" wrappingWidth="82.9677734375">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Text>
+      <Button layoutX="14.0" layoutY="21.0" mnemonicParsing="false" text="&lt;&lt; Back" />
+      <Button layoutX="499.0" layoutY="21.0" mnemonicParsing="false" text="New Book" />
+      <TableView fx:id="tbBook" layoutX="9.0" layoutY="75.0" prefHeight="312.0" prefWidth="583.0">
+        <columns>
+          <TableColumn fx:id="idID" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="idName" prefWidth="103.0" text="Name" />
+            <TableColumn fx:id="idAuthor" prefWidth="83.0" text="Author" />
+            <TableColumn fx:id="idQty" prefWidth="88.0" text="Qty" />
+            <TableColumn prefWidth="118.0" text="Action" />
+        </columns>
+      </TableView>
+   </children>
+</Pane>

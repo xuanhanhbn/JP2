@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane fx:controller="Library.homeController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button onAction="#handleChangeBook" layoutX="14.0" layoutY="27.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="557.0" text="Book" />
+      <Button layoutX="14.0" layoutY="150.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="557.0" text="Rents" />
+      <Button layoutX="22.0" layoutY="279.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="557.0" text="Book Manager" />
+   </children>
+</Pane>

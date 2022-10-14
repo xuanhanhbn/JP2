@@ -8,10 +8,10 @@ import javafx.scene.Scene;
 
 public class Controller {
     public void handleChangeBook(ActionEvent actionEvent) throws Exception {
-        Parent bookPage = FXMLLoader.load(getClass().getResource("./Book/formBook.fxml"));
-        Scene listScene = new Scene(bookPage, 800, 600);
-//        Main.rootStage.setTitle("From Add Book");
-        Main.rootStage.setScene(listScene);
+        Parent editPage = FXMLLoader.load(getClass().getResource("./Book/formBook.fxml"));
+        Scene editScene = new Scene(editPage, 800, 600);
+        Main.rootStage.setTitle("Form Edit Book");
+        Main.rootStage.setScene(editScene);
     }
 
     public void handleChangeStaff(ActionEvent actionEvent) {
