@@ -21,7 +21,7 @@
           <TableColumn fx:id="idName" prefWidth="103.0" text="Name" />
             <TableColumn fx:id="idAuthor" prefWidth="83.0" text="Author" />
             <TableColumn fx:id="idQty" prefWidth="88.0" text="Qty" />
-            <TableColumn prefWidth="118.0" text="Action" />
+            <TableColumn fx:id="idEdit" prefWidth="118.0" text="Action" />
         </columns>
       </TableView>
    </children>

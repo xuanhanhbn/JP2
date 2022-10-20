@@ -31,6 +31,7 @@ public class BookRepository implements IBookRepository {
 
     @Override
     public boolean create(Book book) {
+        try {
             String sql_txt  = "insert into Book(name, author, qty) values(?,?,?)";
             Connector conn = Connector.getInstance();
             ArrayList arr = new ArrayList();
@@ -41,27 +42,66 @@ public class BookRepository implements IBookRepository {
             if (conn.executeAdd(sql_txt,arr)) {
                 return true;
             }
+        } catch (Exception e){
+
+        }
+
         return false;
     }
 
     @Override
     public boolean update(Book book) {
+        try {
+            String sql_txt  = " UPDATE Book SET name = ?, author = ?, qty = ? WHERE id = ?";
+            Connector conn = Connector.getInstance();
+            ArrayList arr = new ArrayList();
+            arr.add(book.getName());
+            arr.add(book.getAuthor());
+            arr.add(book.getQty());
+            arr.add(book.getId());
 
-        String sql_txt  = " UPDATE `Book` SET `name`='[value-2]',`author`='[value-3]',`qty`='[value-4]' WHERE 1";
-        Connector conn = Connector.getInstance();
-        ArrayList arr = new ArrayList();
-        arr.add(book.getName());
-        arr.add(book.getAuthor());
-        arr.add(book.getQty());
+            if (conn.executeAdd(sql_txt,arr)) {
+                return true;
+            }
+        } catch (Exception e){
 
-        if (conn.executeAdd(sql_txt,arr)) {
-            return true;
         }
         return false;
     }
 
     @Override
     public boolean delete(Book book) {
+        try {
+            String sql_txt  = "DELETE FROM `Book` WHERE id = ?";
+            Connector conn = Connector.getInstance();
+            ArrayList arr = new ArrayList();
+            arr.add(book.getId());
+            if (conn.executeAdd(sql_txt,arr)) {
+                return true;
+            }
+        } catch (Exception e) {
+        }
         return false;
+    }
+
+    @Override
+    public Book findOne(Integer id) {
+        try{
+            String sql_txt  = "SELECT * FROM `Book` WHERE id = ?";
+            Connector conn = Connector.getInstance();
+            ArrayList arr = new ArrayList();
+            arr.add(id);
+            ResultSet rs = conn.executeLook(sql_txt,arr);
+            while (rs.next()){
+                int Id = rs.getInt("id");
+                String name = rs.getString("name");
+                String author = rs.getString("author");
+                int qty = rs.getInt("qty");
+               return new Book(Id,name,author,qty);
+            }
+        } catch (Exception e){
+
+        }
+        return null;
     }
 }

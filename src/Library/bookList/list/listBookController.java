@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -25,6 +26,8 @@ public class listBookController implements Initializable {
     public TableColumn<Book, String> idName;
     public TableColumn<Book, String> idAuthor;
     public TableColumn<Book, Integer> idQty;
+    public TableColumn<Book, Button> idEdit;
+
 
 
     @Override
@@ -33,6 +36,8 @@ public class listBookController implements Initializable {
         idName.setCellValueFactory(new PropertyValueFactory<Book, String>("name"));
         idAuthor.setCellValueFactory(new PropertyValueFactory<Book, String>("author"));
         idQty.setCellValueFactory(new PropertyValueFactory<Book, Integer>("qty"));
+        idEdit.setCellValueFactory(new PropertyValueFactory<Book, Button>("edit"));
+
         ObservableList<Book> listBook = FXCollections.observableArrayList();
 //        Get API Database
         ObservableList<Book> ls = FXCollections.observableArrayList();
