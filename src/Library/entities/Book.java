@@ -71,4 +71,9 @@ public class Book {
     public void setQty(Integer qty) {
         this.qty = qty;
     }
+
+    @Override
+    public String toString() {
+        return getName();
+    }
 }
