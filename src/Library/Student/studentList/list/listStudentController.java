@@ -1,0 +1,67 @@
+package Library.Student.studentList.list;
+
+import Library.Main;
+import Library.entities.Student;
+import Library.helper.Connector;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+
+import java.net.URL;
+import java.sql.ResultSet;
+import java.util.ResourceBundle;
+
+public class listStudentController implements Initializable {
+    public TableView tbvStudent;
+    public TableColumn<Student, Integer> idIDStudent;
+    public TableColumn<Student, String> idName;
+    public TableColumn<Student, String> idEmail;
+    public TableColumn<Student, String> idTel;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        idIDStudent.setCellValueFactory(new PropertyValueFactory<Student, Integer>("id"));
+        idName.setCellValueFactory(new PropertyValueFactory<Student, String>("name"));
+        idEmail.setCellValueFactory(new PropertyValueFactory<Student, String>("email"));
+        idTel.setCellValueFactory(new PropertyValueFactory<Student, String>("tel"));
+        ObservableList<Student> listStudent = FXCollections.observableArrayList();
+
+//        GET DB
+        try {
+            String sql_txt = "select * from Student";
+            Connector conn = Connector.getInstance();
+            ResultSet rs = conn.query(sql_txt);
+            while (rs.next()){
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String email = rs.getString("email");
+                String tel = rs.getString("tel");
+                Student b = new Student(id,name,email,tel);
+                listStudent.add(b);
+            }
+        }catch (Exception e){
+            System.out.println("Error: "+e.getMessage());
+        } finally {
+            tbvStudent.setItems(listStudent);
+        }
+    }
+
+    public void backHome(ActionEvent actionEvent) throws Exception {
+        Parent listBook = FXMLLoader.load(getClass().getResource("../../../home.fxml"));
+        Main.rootStage.setTitle("Home");
+        Main.rootStage.setScene(new Scene(listBook, 800, 600));
+    }
+
+    public void handleChangeAddStudent(ActionEvent actionEvent) throws Exception {
+        Parent listBook = FXMLLoader.load(getClass().getResource("../../../create/student/createStudent.fxml"));
+        Main.rootStage.setTitle("Create Student");
+        Main.rootStage.setScene(new Scene(listBook, 800, 600));
+    }
+}

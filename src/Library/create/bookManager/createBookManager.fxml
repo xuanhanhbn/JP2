@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ComboBox layoutX="168.0" layoutY="14.0" prefHeight="46.0" prefWidth="264.0" promptText="Name Student" />
+      <ComboBox layoutX="168.0" layoutY="75.0" prefHeight="46.0" prefWidth="264.0" promptText="Name Book" />
+      <TextField layoutX="168.0" layoutY="139.0" prefHeight="46.0" prefWidth="264.0" promptText="Quantity" />
+      <TextField layoutX="168.0" layoutY="200.0" prefHeight="46.0" prefWidth="264.0" promptText="Start Day" />
+      <Button layoutX="168.0" layoutY="277.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="99.0" text="Cancel" />
+      <Button layoutX="333.0" layoutY="277.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="99.0" text="Submit" />
+   </children>
+</Pane>
