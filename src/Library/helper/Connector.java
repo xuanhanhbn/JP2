@@ -54,7 +54,7 @@ public class Connector {
         return conn.prepareStatement(sql);
     }
 
-    public boolean executeAdd(String sql, ArrayList parameters) throws Exception {
+    public boolean executeAdd(String sql, ArrayList parameters) {
         try {
             PreparedStatement pstm = getPreparedStatement(sql);
             for (int i = 0; i < parameters.size(); i++) {

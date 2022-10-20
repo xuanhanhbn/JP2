@@ -1,6 +1,8 @@
 package Library.create.book;
 
 import Library.Main;
+import Library.dao.impls.BookRepository;
+import Library.entities.Book;
 import Library.helper.Connector;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -20,14 +22,10 @@ public class createController {
             String name = txtName.getText();
             String author = txtAuthor.getText();
             int qty = Integer.parseInt(txtQty.getText());
-            String sql_txt  = "insert into Book(name, author, qty) values(?,?,?)";
-            Connector conn = Connector.getInstance();
-            ArrayList arr = new ArrayList();
-            arr.add(name);
-            arr.add(author);
-            arr.add(qty);
+            Book book = new Book(null,name,author,qty);
+            BookRepository rp = new BookRepository();
 
-            if (conn.executeAdd(sql_txt,arr)){
+            if (rp.create(book)){
                 handleCancel(null);
             }else {
                 System.out.println("Error");

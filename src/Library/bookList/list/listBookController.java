@@ -1,6 +1,7 @@
 package Library.bookList.list;
 
 import Library.Main;
+import Library.dao.impls.BookRepository;
 import Library.entities.Book;
 import Library.helper.Connector;
 import javafx.collections.FXCollections;
@@ -34,24 +35,11 @@ public class listBookController implements Initializable {
         idQty.setCellValueFactory(new PropertyValueFactory<Book, Integer>("qty"));
         ObservableList<Book> listBook = FXCollections.observableArrayList();
 //        Get API Database
-        try {
-            String sql_txt = "select * from Book";
-            Connector conn = Connector.getInstance();
-            ResultSet rs = conn.query(sql_txt);
-            while (rs.next()){
-                int id = rs.getInt("id");
-                String name = rs.getString("name");
-                String author = rs.getString("author");
-                int qty = rs.getInt("qty");
-                Book b = new Book(id,name,author,qty);
-                listBook.add(b);
-            }
-        }catch (Exception e){
-            System.out.println("Error: "+e.getMessage());
-        } finally {
+        ObservableList<Book> ls = FXCollections.observableArrayList();
+        BookRepository rp = new BookRepository();
+        ls.addAll(rp.all());
+        tbBook.setItems(ls);
 
-            tbBook.setItems(listBook);
-        }
 
     }
 
