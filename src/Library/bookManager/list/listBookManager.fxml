@@ -7,13 +7,12 @@
 
 <Pane fx:controller="Library.bookManager.list.Controller" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TableView layoutX="14.0" layoutY="100.0" prefHeight="275.0" prefWidth="559.0">
+      <TableView fx:id="tbvBookManager" layoutX="14.0" layoutY="100.0" prefHeight="275.0" prefWidth="559.0">
         <columns>
-          <TableColumn prefWidth="62.0" text="STT" />
-          <TableColumn prefWidth="122.0" text="Name Student" />
-            <TableColumn prefWidth="122.0" text="Name Book" />
-            <TableColumn prefWidth="122.0" text="Qty" />
-            <TableColumn prefWidth="130.0" text="Expiration Date" />
+          <TableColumn fx:id="tdID" prefWidth="62.0" text="ID" />
+          <TableColumn fx:id="tdNameStudent" prefWidth="122.0" text="Name Student" />
+            <TableColumn fx:id="tdNameBook" prefWidth="122.0" text="Name Book" />
+            <TableColumn fx:id="tdExpDate" prefWidth="130.0" text="Expiration Date" />
         </columns>
       </TableView>
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="94.0" text="&lt;&lt; Home" />

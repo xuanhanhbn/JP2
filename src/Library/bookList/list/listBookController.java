@@ -44,8 +44,6 @@ public class listBookController implements Initializable {
         BookRepository rp = new BookRepository();
         ls.addAll(rp.all());
         tbBook.setItems(ls);
-
-
     }
 
     public void handleAddNewBook(ActionEvent actionEvent) throws Exception {

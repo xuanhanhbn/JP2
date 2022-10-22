@@ -1,6 +1,8 @@
 package Library.create.student;
 
 import Library.Main;
+import Library.dao.impls.StudentRepository;
+import Library.entities.Student;
 import Library.helper.Connector;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -27,27 +29,18 @@ public class createStudentController {
             String name = txtName.getText();
             String email = txtEmail.getText();
             String tel = txtTel.getText();
-            txtNoticeError.setVisible(false);
-            if(!txtEmail.getText().contains("@") || txtEmail.getText().startsWith("@")
-                || txtEmail.getText().endsWith("@") || !txtTel.getText().startsWith("0")){
-                throw new Exception("Nhập đúng thông tin");
+            Student student = new Student(null,name,email,tel);
+            StudentRepository st = new StudentRepository();
+            if (st.create(student)){
+                handleCancel(null);
+            }else {
+                txtNoticeError.setVisible(true);
+                txtNoticeError.setText("Error");
             }
-            String sql_txt  = "insert into Student(name, email, tel) values(?,?,?)";
-            Connector conn = Connector.getInstance();
-            ArrayList arr = new ArrayList();
-            arr.add(name);
-            arr.add(email);
-            arr.add(tel);
-            conn.executeAdd(sql_txt,arr);
-            handleCancel(null);
-            if (conn.executeAdd(sql_txt,arr)){
-                handleCancel(null);}
-            else {
-                System.out.println("Error");
-            }
-        } catch (Exception e){
-            txtNoticeError.setText(e.getMessage());
-            txtNoticeError.setVisible(true);
+        } catch(Exception e){
+            System.out.println(e.getMessage());
         }
+
+
     }
 }

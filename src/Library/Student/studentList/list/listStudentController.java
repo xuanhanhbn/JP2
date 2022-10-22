@@ -1,6 +1,7 @@
 package Library.Student.studentList.list;
 
 import Library.Main;
+import Library.dao.impls.StudentRepository;
 import Library.entities.Student;
 import Library.helper.Connector;
 import javafx.collections.FXCollections;
@@ -34,23 +35,10 @@ public class listStudentController implements Initializable {
         ObservableList<Student> listStudent = FXCollections.observableArrayList();
 
 //        GET DB
-        try {
-            String sql_txt = "select * from Student";
-            Connector conn = Connector.getInstance();
-            ResultSet rs = conn.query(sql_txt);
-            while (rs.next()){
-                int id = rs.getInt("id");
-                String name = rs.getString("name");
-                String email = rs.getString("email");
-                String tel = rs.getString("tel");
-                Student b = new Student(id,name,email,tel);
-                listStudent.add(b);
-            }
-        }catch (Exception e){
-            System.out.println("Error: "+e.getMessage());
-        } finally {
-            tbvStudent.setItems(listStudent);
-        }
+        ObservableList<Student> st = FXCollections.observableArrayList();
+        StudentRepository s = new StudentRepository();
+        st.addAll(s.all());
+        tbvStudent.setItems(st);
     }
 
     public void backHome(ActionEvent actionEvent) throws Exception {

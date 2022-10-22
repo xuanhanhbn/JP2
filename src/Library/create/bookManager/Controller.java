@@ -2,6 +2,7 @@ package Library.create.bookManager;
 
 import Library.Main;
 import Library.dao.impls.BookRepository;
+import Library.dao.impls.StudentRepository;
 import Library.entities.Book;
 import Library.entities.Student;
 import javafx.collections.FXCollections;
@@ -25,21 +26,34 @@ public class Controller implements Initializable {
 
     public void handleCancel(ActionEvent actionEvent) throws Exception {
         Parent listBook = FXMLLoader.load(this.getClass().getResource("../../bookManager/list/listBookManager.fxml"));
-        Main.rootStage.setTitle("Books");
+        Main.rootStage.setTitle("Book Manager");
         Main.rootStage.setScene(new Scene(listBook, 800, 600));
     }
 
     public void handleSubmit(ActionEvent actionEvent) {
         Book selected = cbBook.getSelectionModel().getSelectedItem();
+        Student selectStudent = cboStudent.getSelectionModel().getSelectedItem();
         LocalDate dp = dpEx.getValue();
+
+        System.out.println("Combo Book Select: "+selected);
+        System.out.println("Combo Student Select: "+selectStudent);
+        System.out.println("Ex Date: "+dp);
+
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         BookRepository rp = new BookRepository();
+        StudentRepository rps = new StudentRepository();
+
         ObservableList<Book> ls = FXCollections.observableArrayList();
+        ObservableList<Student> st = FXCollections.observableArrayList();
+
         ls.addAll(rp.all());
         cbBook.setItems(ls);
+
+        st.addAll(rps.all());
+        cboStudent.setItems(st);
 
     }
 }
