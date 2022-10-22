@@ -1,32 +1,48 @@
 package Library.entities;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class BookManager {
-    public Integer id;
-    public String nameStudent, nameBook;
-    public Date ExDate;
+    private Integer id;
+    private Integer bookID;
+    private Integer studentID;
+    private Date renDate;
+    private Date expireDate;
+    private Integer status;
 
-    public BookManager(Integer id, String nameStudent, String nameBook, Date exDate) {
+    public BookManager() {
+    }
+
+    public BookManager(Integer id, Integer bookID, Integer studentID, Date renDate, Date expireDate, Integer status) {
         this.id = id;
-        this.nameStudent = nameStudent;
-        this.nameBook = nameBook;
-        ExDate = exDate;
+        this.bookID = bookID;
+        this.studentID = studentID;
+        this.renDate = renDate;
+        this.expireDate = expireDate;
+        this.status = status;
     }
 
-    public Integer getId() {
-        return id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getNameStudent() {
-        return nameStudent;
+    public void setBookID(Integer bookID) {
+        this.bookID = bookID;
     }
 
-    public String getNameBook() {
-        return nameBook;
+    public void setStudentID(Integer studentID) {
+        this.studentID = studentID;
     }
 
-    public Date getExDate() {
-        return ExDate;
+    public void setRenDate(Date renDate) {
+        this.renDate = renDate;
+    }
+
+    public void setExpireDate(Date expireDate) {
+        this.expireDate = expireDate;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

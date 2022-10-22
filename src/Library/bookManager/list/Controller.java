@@ -1,8 +1,11 @@
 package Library.bookManager.list;
 
 import Library.Main;
+import Library.dao.impls.BookRepository;
 import Library.entities.Book;
 import Library.entities.BookManager;
+import Library.enums.RepositoryType;
+import Library.factory.RepositoryFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -39,5 +42,10 @@ public class Controller implements Initializable {
         tdExpDate.setCellValueFactory(new PropertyValueFactory<BookManager, Date>("exDate"));
         ObservableList<BookManager> listBookManager = FXCollections.observableArrayList();
 
+//        Get API Database
+        ObservableList<BookManager> ls = FXCollections.observableArrayList();
+        BookRepository rp = (BookRepository) RepositoryFactory.createRepository(RepositoryType.BOOKMANAGER);
+//        ls.addAll(rp.all());
+        tbvBookManager.setItems(ls);
     }
 }

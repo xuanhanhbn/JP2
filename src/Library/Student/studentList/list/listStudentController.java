@@ -2,7 +2,10 @@ package Library.Student.studentList.list;
 
 import Library.Main;
 import Library.dao.impls.StudentRepository;
+import Library.dao.interfaces.IStudentRepository;
 import Library.entities.Student;
+import Library.enums.RepositoryType;
+import Library.factory.RepositoryFactory;
 import Library.helper.Connector;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -36,7 +39,7 @@ public class listStudentController implements Initializable {
 
 //        GET DB
         ObservableList<Student> st = FXCollections.observableArrayList();
-        StudentRepository s = new StudentRepository();
+        StudentRepository s = (StudentRepository) RepositoryFactory.createRepository(RepositoryType.STUDENT);
         st.addAll(s.all());
         tbvStudent.setItems(st);
     }

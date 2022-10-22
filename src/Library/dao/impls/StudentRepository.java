@@ -1,5 +1,6 @@
 package Library.dao.impls;
 
+import Library.dao.interfaces.IRepository;
 import Library.dao.interfaces.IStudentRepository;
 import Library.entities.Book;
 import Library.entities.Student;
@@ -11,7 +12,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class StudentRepository implements IStudentRepository {
+public class StudentRepository implements IRepository<Student> {
     @Override
     public ArrayList<Student> all() {
         ArrayList<Student> st = new ArrayList<>();
@@ -89,5 +90,10 @@ public class StudentRepository implements IStudentRepository {
         } catch (Exception e) {
         }
         return false;
+    }
+
+    @Override
+    public Student findOne(Integer id) {
+        return null;
     }
 }

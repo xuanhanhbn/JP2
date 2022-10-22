@@ -3,6 +3,8 @@ package Library.bookList.list;
 import Library.Main;
 import Library.dao.impls.BookRepository;
 import Library.entities.Book;
+import Library.enums.RepositoryType;
+import Library.factory.RepositoryFactory;
 import Library.helper.Connector;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -41,7 +43,7 @@ public class listBookController implements Initializable {
         ObservableList<Book> listBook = FXCollections.observableArrayList();
 //        Get API Database
         ObservableList<Book> ls = FXCollections.observableArrayList();
-        BookRepository rp = new BookRepository();
+        BookRepository rp = (BookRepository) RepositoryFactory.createRepository(RepositoryType.BOOK);
         ls.addAll(rp.all());
         tbBook.setItems(ls);
     }
