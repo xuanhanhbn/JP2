@@ -1,5 +1,9 @@
 package Library.entities;
 
+import Library.dao.impls.BookRepository;
+import Library.enums.RepositoryType;
+import Library.factory.RepositoryFactory;
+
 import java.util.Date;
 
 public class BookManager {
@@ -44,5 +48,33 @@ public class BookManager {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public Integer getBookID() {
+        return bookID;
+    }
+
+    public Integer getStudentID() {
+        return studentID;
+    }
+
+    public Date getRenDate() {
+        return renDate;
+    }
+
+    public Date getExpireDate() {
+        return expireDate;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public Book book(){
+        return ((BookRepository) RepositoryFactory.createRepository(RepositoryType.BOOK)).findOne(this.getBookID());
     }
 }
