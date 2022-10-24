@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane fx:controller="Library.bookManager.list.Controller" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView fx:id="tbvBookManager" layoutX="14.0" layoutY="72.0" prefHeight="314.0" prefWidth="573.0">
+        <columns>
+          <TableColumn fx:id="tdID" prefWidth="48.0" text="ID" />
+          <TableColumn fx:id="tdStudent" prefWidth="98.0" text="Student" />
+            <TableColumn fx:id="tdBook" prefWidth="99.0" text="Book" />
+            <TableColumn fx:id="tdRentDate" prefWidth="106.0" text="RenDate" />
+            <TableColumn fx:id="tdExDate" prefWidth="117.0" text="ExDate" />
+            <TableColumn fx:id="tdStatus" prefWidth="104.0" text="Status" />
+        </columns>
+      </TableView>
+      <Button onAction="#handleBackHome" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="96.0" text="&lt;&lt; Home" />
+      <Button onAction="#handleAdd" layoutX="490.0" layoutY="14.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="96.0" text="New" />
+   </children>
+</Pane>

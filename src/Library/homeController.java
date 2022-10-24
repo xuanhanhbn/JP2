@@ -21,8 +21,8 @@ public class homeController {
     }
 
     public void handleChangeBookManager(ActionEvent actionEvent) throws Exception {
-        Parent listBook = FXMLLoader.load(getClass().getResource("bookManager/list/listBookManager.fxml"));
-        Main.rootStage.setTitle("Student");
-        Main.rootStage.setScene(new Scene(listBook, 800, 600));
+        Parent listBookManager = FXMLLoader.load(getClass().getResource("bookManager/list/listBookRents.fxml"));
+        Main.rootStage.setTitle("Book Manager");
+        Main.rootStage.setScene(new Scene(listBookManager, 800, 600));
     }
 }

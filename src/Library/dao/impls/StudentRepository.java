@@ -94,6 +94,23 @@ public class StudentRepository implements IRepository<Student> {
 
     @Override
     public Student findOne(Integer id) {
+        try{
+            String sql_txt  = "SELECT * FROM `Student` WHERE id = ?";
+            Connector conn = Connector.getInstance();
+            ArrayList arr = new ArrayList();
+            arr.add(id);
+            ResultSet rs = conn.executeLook(sql_txt,arr);
+            while (rs.next()){
+                int Id = rs.getInt("id");
+                String name = rs.getString("name");
+                String email = rs.getString("email");
+                String tel = rs.getString("tel");
+                return new Student(Id,name,email,tel);
+            }
+        } catch (Exception e){
+
+        }
         return null;
+
     }
 }

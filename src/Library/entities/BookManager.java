@@ -1,6 +1,7 @@
 package Library.entities;
 
 import Library.dao.impls.BookRepository;
+import Library.dao.impls.StudentRepository;
 import Library.enums.RepositoryType;
 import Library.factory.RepositoryFactory;
 
@@ -10,22 +11,38 @@ public class BookManager {
     private Integer id;
     private Integer bookID;
     private Integer studentID;
-    private Date renDate;
+    private Date rentDate;
     private Date expireDate;
-    private Integer status;
+    private String status;
+    private String bookName;
+    private String studentName;
+
 
     public BookManager() {
     }
 
-    public BookManager(Integer id, Integer bookID, Integer studentID, Date renDate, Date expireDate, Integer status) {
+    public BookManager(Integer id, Integer bookID, Integer studentID, Date rentDate, Date expireDate, String status) {
         this.id = id;
         this.bookID = bookID;
         this.studentID = studentID;
-        this.renDate = renDate;
+        this.rentDate = rentDate;
         this.expireDate = expireDate;
         this.status = status;
     }
 
+    public String getBookName() {
+        return this.book().getName();
+    }
+
+    public void setBookName(String bookName) {
+        this.bookName = bookName;
+    }
+    public String getStudentName(){
+        return this.student().getName();
+    }
+    public void setStudentName(String studentName){
+        this.studentName = studentName;
+    }
     public void setId(Integer id) {
         this.id = id;
     }
@@ -38,15 +55,15 @@ public class BookManager {
         this.studentID = studentID;
     }
 
-    public void setRenDate(Date renDate) {
-        this.renDate = renDate;
+    public void setRentDate(Date rentDate) {
+        this.rentDate = rentDate;
     }
 
     public void setExpireDate(Date expireDate) {
         this.expireDate = expireDate;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
@@ -62,19 +79,23 @@ public class BookManager {
         return studentID;
     }
 
-    public Date getRenDate() {
-        return renDate;
+    public Date getRentDate() {
+        return rentDate;
     }
 
     public Date getExpireDate() {
         return expireDate;
     }
 
-    public Integer getStatus() {
+    public String getStatus() {
         return status;
     }
 
     public Book book(){
         return ((BookRepository) RepositoryFactory.createRepository(RepositoryType.BOOK)).findOne(this.getBookID());
     }
+    public Student student(){
+        return (Student) RepositoryFactory.createRepository(RepositoryType.STUDENT).findOne(this.getStudentID());
+    }
 }
+

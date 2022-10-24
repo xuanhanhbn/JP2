@@ -25,7 +25,7 @@ public class Controller implements Initializable {
     public DatePicker dpEx;
 
     public void handleCancel(ActionEvent actionEvent) throws Exception {
-        Parent listBook = FXMLLoader.load(this.getClass().getResource("../../bookManager/list/listBookManager.fxml"));
+        Parent listBook = FXMLLoader.load(this.getClass().getResource("../../bookManager/list/listBookRents.fxml"));
         Main.rootStage.setTitle("Book Manager");
         Main.rootStage.setScene(new Scene(listBook, 800, 600));
     }
@@ -34,10 +34,6 @@ public class Controller implements Initializable {
         Book selected = cbBook.getSelectionModel().getSelectedItem();
         Student selectStudent = cboStudent.getSelectionModel().getSelectedItem();
         LocalDate dp = dpEx.getValue();
-
-        System.out.println("Combo Book Select: "+selected);
-        System.out.println("Combo Student Select: "+selectStudent);
-        System.out.println("Ex Date: "+dp);
 
     }
 

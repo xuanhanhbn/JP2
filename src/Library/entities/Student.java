@@ -12,6 +12,7 @@ public class Student {
         this.name = name;
         this.email = email;
         this.tel = tel;
+
     }
 
     public Integer getId() {

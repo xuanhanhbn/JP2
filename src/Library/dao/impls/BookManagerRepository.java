@@ -15,23 +15,25 @@ public class BookManagerRepository implements IRepository<BookManager> {
     @Override
     public ArrayList<BookManager> all() {
         ArrayList<BookManager> bm = new ArrayList<>();
-//        try {
-//            String sql_txt = "select * from BookRents";
-//            Connector conn = Connector.getInstance();
-//            ResultSet rs = conn.query(sql_txt);
-//            while (rs.next()) {
-//                int id = rs.getInt("id");
-//                String nameStudent = rs.getString("nameStudent");
-//                String nameBook = rs.getString("nameBook");
-//                Date exDate = rs.getDate("exDate");
-//                BookManager bookManager = new BookManager(id,nameStudent,nameBook,exDate);
-//                bm.add(bookManager);
-//            }
-//        } catch (Exception e) {
-//            System.out.println("Error: " + e.getMessage());
-//        }
-//        return bm;
-        return null;
+        try {
+            String sql_txt = "select * from BookRents";
+            Connector conn = Connector.getInstance();
+            ResultSet rs = conn.query(sql_txt);
+            while(rs.next()){
+                bm.add(new BookManager(
+                        rs.getInt("id"),
+                        rs.getInt("bookID"),
+                        rs.getInt("studentID"),
+                        rs.getDate("rentDate"),
+                        rs.getDate("expireDate"),
+                        rs.getString("status")
+
+                ));
+            }
+        }catch(Exception e){
+
+        }
+        return bm;
     }
 
     @Override
